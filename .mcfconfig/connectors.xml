@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- The connectors registry file permits registration of domains and connectors upon the
+      startup of the jetty-based ManifoldCF example.  In a real installation, this registration
+      step would be done ideally just once, but in the example the connectors
+      are all reregistered on every startup.
+-->
+<connectors>
+    <!-- Add any authorization domains here -->
+    <!-- authorizationdomain domain="AD" name="ActiveDirectory"/-->
+    <!-- authorizationdomain domain="SHP" name="SharePoint"/-->
+    <!-- authorizationdomain domain="FB" name="FaceBook"/-->
+
+    <!-- Add your output connectors here -->
+    <outputconnector name="Topla Collector" class="com.infodna.topla.mcf.agents.output.CollectorOutputConnector"/>
+    <outputconnector name="TOPLA VALIDATOR OUTPUT" class="com.infodna.topla.mcf.agents.output.CollectorOutputConnector"/>
+    <!--TOPLA VALIDATOR OUTPUT-->
+    <!--TC-MIGRATION-DOCUMENTUM-OUT-->
+    <!--TC-MIGRATION-INFOARCHIVE-OUT-->
+
+
+
+    <!-- Add your transformation connectors here -->
+    <transformationconnector name="Metadata adjuster" class="org.apache.manifoldcf.agents.transformation.forcedmetadata.ForcedMetadataConnector"/>
+    <transformationconnector name="Allowed documents" class="org.apache.manifoldcf.agents.transformation.documentfilter.DocumentFilter"/>
+
+    <transformationconnector name="TOPLA VALIDATOR TRANSFORMER" class="org.apache.manifoldcf.agents.transformation.forcedmetadata.ForcedMetadataConnector"/>
+    <!--<transformationconnector name="TOPLA VALIDATOR TRANSFORMER" class="org.apache.manifoldcf.agents.transformation.forcedmetadata.ForcedMetadataConnector"/>-->
+    <!--TOPLA VALIDATOR TRANSFORMER-->
+    <!--TOPLA VALIDATOR TRANSFORMER-->
+
+    <!-- Add your mapping connectors here -->
+
+    <!-- Add your authority connectors here -->
+
+    <!-- Add your repository connectors here -->
+
+    <repositoryconnector name="File system" class="org.apache.manifoldcf.crawler.connectors.filesystem.FileConnector"/>
+    <repositoryconnector name="Windows shares" class="org.apache.manifoldcf.crawler.connectors.sharedrive.SharedDriveConnector"/>
+    <repositoryconnector name="JDBC" class="org.apache.manifoldcf.crawler.connectors.jdbc.JDBCConnector"/>
+    <!-- Add your notification connectors here -->
+    <!--TOPLA VALIDATOR REPO-->
+    <!--TC-MIGRATION-REPO-->
+
+
+</connectors>

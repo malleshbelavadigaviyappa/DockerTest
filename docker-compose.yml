@@ -1,0 +1,31 @@
+version: '3.2'
+services:
+  db:
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Welcome2017
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - /opt/db-data:/var/lib/postgresql/data
+
+  tomcat:
+    image: 740749496261.dkr.ecr.us-east-1.amazonaws.com/infodna:V-DOC-3-12-1.6
+    restart: always
+    links:
+      - db:db
+      - solr:solr
+    ports:
+      - 8080:8080
+    volumes:
+      - /opt/localstorage:/opt/localstorage
+
+  solr:
+       build: solr-tessaract/
+       ports:
+          - 8983:8983
+       volumes:
+          - /var/solr:/var/solr
+          - /var/solr/logs:/solr-8.2.0/server/logs
